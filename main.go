@@ -17,6 +17,7 @@ import (
 	"google.golang.org/grpc/grpclog"
 
 	"books/server/proto/library"
+	"books/databaselayer"
 )
 
 var logger *logrus.Logger
@@ -40,6 +41,9 @@ const (
 )
 
 func main() {
+	handler, err := databaselayer.GetDatabaseHandler(databaselayer.MYSQL, "root:password@/books");
+	log.Println(handler.GetAllBooks())
+
 	lis, err := net.Listen("tcp", port)
 	fmt.Println("Listening on", port)
 

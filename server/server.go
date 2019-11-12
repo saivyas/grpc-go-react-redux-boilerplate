@@ -94,6 +94,7 @@ type broadcaster struct {
 	listeners  map[string]chan<- string
 }
 
+
 func (s *BookService) GetBook(ctx context.Context, bookquery *library.GetBookRequest) (*library.Book, error) {
 	fmt.Println("Get Book Request Happended")
 	for _, bk := range books {
